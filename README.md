@@ -10,3 +10,31 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+# Cape Town Photography
+
+A visual journey through Cape Town, South Africa, showcasing the city's diverse beauty through carefully curated photography.
+
+## 🌟 Live Demo
+[View the live site](your-vercel-url-here)
+
+## 📸 Featured Categories
+- Adventure
+- Landscape
+- Architecture
+- Buildings
+- Nightlife
+- Culture
+- Cars
+
+## 🛠 Built With
+- Next.js
+- React
+- Tailwind CSS
+- Vercel
+
+## 📍 About
+This project showcases the beauty of Cape Town through high-quality photography, featuring various aspects of the city's culture and landscape.
+
+## 📱 Screenshots
+![Website Preview](path-to-screenshot)
