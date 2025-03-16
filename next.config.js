@@ -22,6 +22,14 @@ const nextConfig = {
       },
     ]
   },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': '.',
+      '@styles': './styles',
+    };
+    return config;
+  },
 }
 
 module.exports = nextConfig 
