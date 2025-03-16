@@ -1,32 +1,40 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['vercel.com'],
+    domains: ['vercel.com', 'images.unsplash.com'],
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
       {
         protocol: 'https',
         hostname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
     ],
+    unoptimized: process.env.NODE_ENV === 'development',
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   output: 'standalone',
-  poweredByHeader: false,
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: false,
   async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        destination: '/:path*',
-      },
-    ]
+    return [];
   },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': '.',
       '@styles': './styles',
+      '@components': './components',
+      '@public': './public',
     };
     return config;
   },
@@ -44,7 +52,23 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
-  }
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig 
