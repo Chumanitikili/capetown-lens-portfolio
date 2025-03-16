@@ -37,7 +37,14 @@ const nextConfig = {
   // Ensure proper handling of static files
   distDir: '.next',
   generateEtags: true,
-  compress: true
+  compress: true,
+  // Add proper asset handling
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/_next' : '',
+  // Improve performance
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+  }
 }
 
 module.exports = nextConfig 
