@@ -37,11 +37,7 @@ const nextConfig = {
   // Ensure proper handling of static files
   distDir: '.next',
   generateEtags: true,
-  compress: true,
-  // Add proper error handling
-  onError: (err) => {
-    console.error('Next.js build error:', err);
-  },
+  compress: true
 }
 
 module.exports = nextConfig 
