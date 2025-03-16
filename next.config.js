@@ -30,6 +30,18 @@ const nextConfig = {
     };
     return config;
   },
+  // Add basePath if your site is not served from the root
+  // basePath: '',
+  // Add assetPrefix if your assets are served from a different domain
+  // assetPrefix: '',
+  // Ensure proper handling of static files
+  distDir: '.next',
+  generateEtags: true,
+  compress: true,
+  // Add proper error handling
+  onError: (err) => {
+    console.error('Next.js build error:', err);
+  },
 }
 
 module.exports = nextConfig 
